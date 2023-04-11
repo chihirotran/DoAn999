@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="297" pageHeight="421" columnWidth="257" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7cac89e7-e4a4-4df1-ad72-1fcb3bfb99b1">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT       dbo.CTHoaDon.MaHH, dbo.CTHoaDon.MaHD AS Expr1, dbo.CTHoaDon.SoLuong, dbo.CTHoaDon.TongTien, dbo.HoaDon.TongTien AS Expr2, dbo.HoaDon.MaHD, dbo.KHACHHANG.HOTEN, dbo.KHACHHANG.SDT, 
+                         dbo.QuanLiNhanVien.TenNV, dbo.SanPham.TenSP, dbo.QuanLiNhanVien.MaNV
+FROM            dbo.TaiKhoan INNER JOIN
+                         dbo.CTHoaDon INNER JOIN
+                         dbo.HoaDon ON dbo.CTHoaDon.MaHD = dbo.HoaDon.MaHD INNER JOIN
+                         dbo.KHACHHANG ON dbo.HoaDon.MaKH = dbo.KHACHHANG.MAKH INNER JOIN
+                         dbo.QuanLiNhanVien ON dbo.HoaDon.MaNV = dbo.QuanLiNhanVien.MaNV ON dbo.TaiKhoan.MaNV = dbo.QuanLiNhanVien.MaNV CROSS JOIN
+                         dbo.SanPham INNER JOIN
+                         dbo.NCC ON dbo.SanPham.NhaCungCap = dbo.NCC.MaNCC]]>
+	</queryString>
+	<field name="MaHH" class="java.lang.String"/>
+	<field name="Expr1" class="java.lang.String"/>
+	<field name="SoLuong" class="java.lang.Integer"/>
+	<field name="TongTien" class="java.lang.Long"/>
+	<field name="Expr2" class="java.lang.Long"/>
+	<field name="MaHD" class="java.lang.String"/>
+	<field name="HOTEN" class="java.lang.String"/>
+	<field name="SDT" class="java.lang.String"/>
+	<field name="TenNV" class="java.lang.String"/>
+	<field name="TenSP" class="java.lang.String"/>
+	<field name="MaNV" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="21" uuid="5e399736-f868-41b8-8e35-4c8911bf088e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hóa Đơn Cửa Hàng LEDMDSTORE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="21" width="257" height="20" uuid="ec634c51-6226-4dc6-8e31-946b790c6cca"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Số 25 Ngõ 46 Phố, Hoàng Liên, Liên Mạc, Bắc Từ Liêm, Hà Nội ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="62" y="0" width="58" height="20" uuid="e423bd8a-6db6-4fce-8522-0e0ca472a763"/>
+				<textFieldExpression><![CDATA[$F{MaHD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="0" width="72" height="20" uuid="6496b3c8-9e4a-4189-8da3-a26e07710b76"/>
+				<textFieldExpression><![CDATA[$F{TenNV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="62" height="20" uuid="8068c4a3-e811-4eb1-aa96-2f69649d308d"/>
+				<text><![CDATA[Mã Hóa Đơn:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="67" height="20" uuid="57cd2ca7-e071-4a97-a29c-53c80d9b6552"/>
+				<text><![CDATA[Tên Nhân Viên]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="31" height="20" uuid="3b3c35ec-222c-4fd8-9590-7525f6a7811a"/>
+				<text><![CDATA[MaHH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="35" y="2" width="115" height="20" uuid="9472b18d-693b-4a62-a945-26696facbfdf"/>
+				<text><![CDATA[TenSP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="2" width="49" height="20" uuid="279e3677-5ae4-4b80-9cbc-20caf1f7b5d9"/>
+				<text><![CDATA[SoLuong]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="199" y="2" width="58" height="20" uuid="c9660a1a-948d-4c8f-9655-38240d76e5df"/>
+				<text><![CDATA[TongTien]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="31" height="20" uuid="a1a82c5a-0d94-44ae-9630-bfbb0b796a76"/>
+				<textFieldExpression><![CDATA[$F{MaHH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="0" width="119" height="20" uuid="e783bd24-9791-46d9-886f-75e1c5633203"/>
+				<textFieldExpression><![CDATA[$F{TenSP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="49" height="20" uuid="c849de78-c10d-44d4-9de0-61d250c96266"/>
+				<textFieldExpression><![CDATA[$F{SoLuong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="0" width="58" height="20" uuid="0ab7adf0-6014-4325-9227-5f95848d5492"/>
+				<textFieldExpression><![CDATA[$F{TongTien}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
